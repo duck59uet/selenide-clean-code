@@ -12,3 +12,6 @@ target/
 # Allure
 .allure
 allure-results/
+
+# Build
+build/

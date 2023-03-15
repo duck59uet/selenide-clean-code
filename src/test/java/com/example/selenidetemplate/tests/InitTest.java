@@ -3,9 +3,11 @@ package com.example.selenidetemplate.tests;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.example.selenidetemplate.DriverBase;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.Test;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -17,11 +19,18 @@ public class InitTest extends DriverBase {
 
     private static String mnemonic = "bless harvest huge empower join laundry toddler cheap glass crop deny anxiety";
 
-    @Test
-    public void googleCheeseExample() throws Exception {
-        WebDriver driver = getDriver();
+    WebDriver driver;
 
+
+    @BeforeMethod
+    public void setupDriver() throws Exception {
+        driver = getDriver();
         WebDriverRunner.setWebDriver(driver);
+        setUpWallet();
+    }
+
+
+    private void setUpWallet(){
 
         open("chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html#/register");
 
@@ -41,5 +50,6 @@ public class InitTest extends DriverBase {
 
         sleep(100);
         $(By.xpath("//button[@type='submit']")).click();
+
     }
 }
