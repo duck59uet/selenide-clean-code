@@ -1,5 +1,6 @@
 .settings/
 grid/assets
+config_default.yml
 
 # Intellij
 .idea/

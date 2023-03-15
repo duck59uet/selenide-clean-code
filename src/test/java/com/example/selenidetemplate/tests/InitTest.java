@@ -1,8 +1,10 @@
 package com.example.selenidetemplate.tests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.example.selenidetemplate.DriverBase;
+import com.example.selenidetemplate.config.ConfigurationManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +19,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class InitTest extends DriverBase {
 
-    private static String mnemonic = "bless harvest huge empower join laundry toddler cheap glass crop deny anxiety";
+    private static String mnemonic = ConfigurationManager.getMnemonic();
+
+    private static String password = ConfigurationManager.getProp("password");
 
     WebDriver driver;
 
@@ -45,8 +49,8 @@ public class InitTest extends DriverBase {
 
         $(By.name("name")).sendKeys("TestAccount");
 
-        $(By.xpath("//div[contains(@class, 'form-inner-container')]//input[@name='password']")).sendKeys("Test@123!");
-        $(By.name("confirmPassword")).sendKeys("Test@123!");
+        $(By.xpath("//div[contains(@class, 'form-inner-container')]//input[@name='password']")).sendKeys(password);
+        $(By.name("confirmPassword")).sendKeys(password);
 
         sleep(100);
         $(By.xpath("//button[@type='submit']")).click();

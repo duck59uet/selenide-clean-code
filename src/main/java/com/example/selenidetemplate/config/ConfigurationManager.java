@@ -56,7 +56,7 @@ public class ConfigurationManager {
                                 propertyName));
     }
 
-    private static String getProp(String propertyName) {
+    public static String getProp(String propertyName) {
         if (testConfig.get(propertyName) == null) {
             return System.getProperty(propertyName) != null ? System.getProperty(propertyName)
                     : getPropertyFromFile(propertyName);
@@ -67,5 +67,9 @@ public class ConfigurationManager {
 
     public static String getMnemonic(){
         return getProp("mnemonic");
+    }
+
+    public static String getPassword(){
+        return getProp("password");
     }
 }
