@@ -14,6 +14,9 @@ import org.openqa.selenium.safari.SafariOptions;
 import java.io.File;
 import java.util.HashMap;
 
+import static com.example.selenidetemplate.util.BrowserConfig.CHROME_NOT_CHECK_DEFAULT_BROWSER;
+import static com.example.selenidetemplate.util.BrowserConfig.START_MAXIMIZED;
+
 public enum DriverType implements DriverSetup {
 
     FIREFOX {
@@ -34,7 +37,7 @@ public enum DriverType implements DriverSetup {
             options.merge(capabilities);
             options.setHeadless(HEADLESS);
             options.addExtensions(new File("src/main/resources/extension_0_11_40_0.crx"));
-            options.addArguments("--no-default-browser-check");
+            options.addArguments(CHROME_NOT_CHECK_DEFAULT_BROWSER);
             options.setExperimentalOption("prefs", chromePreferences);
 
             return new ChromeDriver(options);
