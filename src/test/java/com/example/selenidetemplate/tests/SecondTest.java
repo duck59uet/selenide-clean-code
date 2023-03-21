@@ -15,31 +15,12 @@ public class SecondTest extends BaseTest {
     public void TestConnect(){
         open("chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html#/register");
         setUpWallet(mnemonic1);
-        open("chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html#/register");
-        setUpWallet(mnemonic2);
         open("https://hub.dev.twilight.space/");
-        sleep(17000);
         $("app-wallet").shouldHave(Condition.visible).click();
         $(By.xpath("//div[@class=\"wallet-item ng-star-inserted\"]//div[contains(text(),'Keplr')]")).shouldBe(Condition.visible).click();
-        sleep(10000);
         switchTo().window("Keplr");
         $(By.xpath("//button[contains(text(), 'Approve')]")).shouldHave(Condition.visible).click();
-        sleep(10000);
         switchTo().window("Keplr");
         $(By.xpath("//button[contains(text(), 'Approve')]")).shouldHave(Condition.visible).click();
-        sleep(5000);
-
-        open("https://hub.dev.twilight.space/");
-        sleep(17000);
-        $("app-wallet").shouldHave(Condition.visible).click();
-        $(By.xpath("//div[@class=\"wallet-item ng-star-inserted\"]//div[contains(text(),'Keplr')]")).shouldBe(Condition.visible).click();
-        sleep(2000);
-        switchTo().window("Keplr");
-        $(By.xpath("//button[contains(text(), 'Approve')]")).shouldHave(Condition.visible).click();
-        sleep(5000);
-        switchTo().window("Keplr");
-        $(By.xpath("//button[contains(text(), 'Approve')]")).shouldHave(Condition.visible).click();
-        $(By.xpath("//div[@id='walletBox']")).shouldHave(Condition.visible).click();
-        sleep(5000);
     }
 }

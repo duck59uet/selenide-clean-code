@@ -14,8 +14,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import java.io.File;
 import java.util.HashMap;
 
-import static com.example.selenidetemplate.util.BrowserConfig.CHROME_NOT_CHECK_DEFAULT_BROWSER;
-import static com.example.selenidetemplate.util.BrowserConfig.START_MAXIMIZED;
+import static com.example.selenidetemplate.util.BrowserConfig.*;
 
 public enum DriverType implements DriverSetup {
 
@@ -35,7 +34,7 @@ public enum DriverType implements DriverSetup {
 
             ChromeOptions options = new ChromeOptions();
             options.merge(capabilities);
-            options.setHeadless(HEADLESS);
+            options.addArguments(CHROME_HEADLESS);
             options.addExtensions(new File("src/main/resources/extension_0_11_40_0.crx"));
             options.addArguments(CHROME_NOT_CHECK_DEFAULT_BROWSER);
             options.setExperimentalOption("prefs", chromePreferences);
