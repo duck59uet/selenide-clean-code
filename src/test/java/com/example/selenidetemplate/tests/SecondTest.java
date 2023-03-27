@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SecondTest extends BaseTest {
     private static String mnemonic1 = ConfigurationManager.getProp("mnemonic1");
@@ -13,14 +14,29 @@ public class SecondTest extends BaseTest {
 
     @Test(description = "Login wallet then connect wallet on Seekhype")
     public void TestConnect(){
-        open("chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html#/register");
-        setUpWallet(mnemonic1);
-        open("https://hub.dev.twilight.space/");
-        $("app-wallet").shouldHave(Condition.visible).click();
-        $(By.xpath("//div[@class=\"wallet-item ng-star-inserted\"]//div[contains(text(),'Keplr')]")).shouldBe(Condition.visible).click();
-        switchTo().window("Keplr");
-        $(By.xpath("//button[contains(text(), 'Approve')]")).shouldHave(Condition.visible).click();
-        switchTo().window("Keplr");
-        $(By.xpath("//button[contains(text(), 'Approve')]")).shouldHave(Condition.visible).click();
+        //Connect wallet
+        restoreUpC98Wallet(mnemonic1);
+        open("https://hub.serenity.twilight.space");
+        $("app-wallet").shouldBe(Condition.visible);
+        $("app-wallet").click();
+        $(By.xpath("//div[@class=\"wallet-item ng-star-inserted\"]//div[contains(text(),'Coin98')]")).shouldBe(Condition.visible);
+        $(By.xpath("//div[@class=\"wallet-item ng-star-inserted\"]//div[contains(text(),'Coin98')]")).click();
+        switchTo().window("Coin98 Extension");
+        $(By.xpath("//button[contains(text(), 'Connect')]")).shouldBe(Condition.visible);
+        $(By.xpath("//button[contains(text(), 'Connect')]")).click();
+
+        sleep(1000);
+        switchTo().window("Coin98 Extension");
+        $(By.xpath("//button[contains(text(), 'Confirm')]")).shouldBe(Condition.visible);
+        $(By.xpath("//button[contains(text(), 'Confirm')]")).click();
+
+        sleep(1000);
+        switchTo().window("Coin98 Extension");
+        $(By.xpath("//button[contains(text(), 'Confirm')]")).shouldBe(Condition.visible);
+        $(By.xpath("//button[contains(text(), 'Confirm')]")).click();
+
+        //Mint NFT
+        open("https://hub.serenity.twilight.space/launchpad");
+        sleep(10000);
     }
 }

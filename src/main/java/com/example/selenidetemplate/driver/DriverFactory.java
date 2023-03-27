@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import static com.example.selenidetemplate.driver.DriverType.*;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
@@ -100,7 +101,9 @@ public class DriverFactory {
             desiredCapabilities.setBrowserName(selectedDriverType.toString());
             driver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
         } else {
+
             driver = driverType.getWebDriverObject(desiredCapabilities);
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
     }
 }

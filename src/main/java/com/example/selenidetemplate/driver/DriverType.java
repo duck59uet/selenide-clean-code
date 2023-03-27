@@ -34,8 +34,7 @@ public enum DriverType implements DriverSetup {
 
             ChromeOptions options = new ChromeOptions();
             options.merge(capabilities);
-            options.addArguments(CHROME_HEADLESS);
-            options.addExtensions(new File("src/main/resources/extension_0_11_40_0.crx"));
+            options.addExtensions(new File("src/main/resources/Coin98-Wallet.crx"));
             options.addArguments(CHROME_NOT_CHECK_DEFAULT_BROWSER);
             options.setExperimentalOption("prefs", chromePreferences);
 
