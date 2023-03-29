@@ -31,9 +31,9 @@ public class BaseTest extends DriverBase {
     }
 
     public void setUpKeplrWallet(String mnemonic){
-        open("chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html#/register");
-        $(By.xpath("//button[text()='Import existing account']")).click();
-        sleep(100);
+            open("chrome-extension://dmkamcknogkgcdfhhbddcghachkejeap/popup.html#/register");
+            $(By.xpath("//button[text()='Import existing account']")).click();
+            sleep(100);
         List<SelenideElement> passInputs = $$(By.xpath("//div[contains(@class, 'mnemonic-word-form-group')]//div[contains(@class, 'input-group')]//input[@type='password']"));
 
         String[] mnemonicArr = mnemonic.split(" ");

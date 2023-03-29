@@ -27,6 +27,7 @@
         <retry.attempts>4</retry.attempts>
         <browser>chrome</browser>
         <headless>true</headless>
+        <jmeter.version>5.5</jmeter.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,16 @@
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner</artifactId>
             <version>${owner.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_core</artifactId>
+            <version>${jmeter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_components</artifactId>
+            <version>${jmeter.version}</version>
         </dependency>
     </dependencies>
     <build>

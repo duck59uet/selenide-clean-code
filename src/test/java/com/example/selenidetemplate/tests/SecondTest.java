@@ -6,14 +6,14 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SecondTest extends BaseTest {
     private static String mnemonic1 = ConfigurationManager.getProp("mnemonic1");
     private static String mnemonic2 = ConfigurationManager.getProp("mnemonic2");
 
+
     @Test(description = "Login wallet then connect wallet on Seekhype")
-    public void TestConnect(){
+    public void MintNFT(){
         //Connect wallet
         restoreUpC98Wallet(mnemonic1);
         open("https://hub.serenity.twilight.space");
@@ -36,6 +36,9 @@ public class SecondTest extends BaseTest {
         $(By.xpath("//button[contains(text(), 'Confirm')]")).click();
 
         //Mint NFT
+        sleep(5000);
+        //You should switch to main window
+        switchTo().window("SeekHYPE");
         open("https://hub.serenity.twilight.space/launchpad");
         sleep(10000);
     }
