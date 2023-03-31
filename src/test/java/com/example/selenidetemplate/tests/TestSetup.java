@@ -8,6 +8,7 @@ import com.example.selenidetemplate.config.ConfigurationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import cucumber.api.Scenario;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class BaseTest extends DriverBase {
+public class TestSetup extends DriverBase {
 
     private static String mnemonic = ConfigurationManager.getMnemonic();
 
