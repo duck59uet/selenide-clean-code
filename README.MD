@@ -101,3 +101,13 @@ account1:
   mnemonic: ...
   address: aura1...
 ```
+
+### Run test
+
+Main stack used in this architecture is JAVA. Like other language, JAVA use MAVEN or GRADLE to manage dependency. If 
+you want to run test script, run script:
+
+```bash
+maven clean test
+```
+

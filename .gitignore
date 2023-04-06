@@ -16,4 +16,5 @@ allure-results/
 # Build
 build/
 
-config_default.yml
+#Config
+*.yml
