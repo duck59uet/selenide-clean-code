@@ -38,6 +38,16 @@ public class DriverBase {
         return driverFactoryThread.get().getDriver();
     }
 
+    public static String getInfo() throws Exception{
+        RemoteWebDriver currentDriver = driverFactoryThread.get().getDriver();
+        Capabilities cap = currentDriver.getCapabilities();
+        String browserName = cap.getBrowserName();
+        String platform = cap.getPlatformName().toString();
+        String version = cap.getBrowserVersion();
+
+        return String.format("browser: %s v: %s platform: %s", browserName, version, platform);
+    }
+
     @AfterMethod(alwaysRun = true)
     public static void clearCookies() {
         try {

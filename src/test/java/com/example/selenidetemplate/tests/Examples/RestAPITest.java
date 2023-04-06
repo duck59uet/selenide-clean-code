@@ -1,4 +1,4 @@
-package com.example.selenidetemplate.tests;
+package com.example.selenidetemplate.tests.Examples;
 
 public class RestAPITest {
     public RestAPITest(){

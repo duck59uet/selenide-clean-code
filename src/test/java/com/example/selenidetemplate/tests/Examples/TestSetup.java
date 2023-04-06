@@ -1,10 +1,11 @@
-package com.example.selenidetemplate.tests;
+package com.example.selenidetemplate.tests.Examples;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.example.selenidetemplate.DriverBase;
 import com.example.selenidetemplate.config.ConfigurationManager;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -18,9 +19,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class TestSetup extends DriverBase {
 
-    private static String mnemonic = ConfigurationManager.getMnemonic();
-
-    private static String password = ConfigurationManager.getProp("password");
+    JSONObject config = new JSONObject(ConfigurationManager.readConfiguration());
 
     WebDriver driver;
 
@@ -57,8 +56,8 @@ public class TestSetup extends DriverBase {
 
         //Set password
         if($(By.name("confirmPassword")).is(Condition.enabled)){
-            $(By.xpath("//div[contains(@class, 'form-inner-container')]//input[@name='password']")).sendKeys(password);
-            $(By.name("confirmPassword")).sendKeys(password);
+            $(By.xpath("//div[contains(@class, 'form-inner-container')]//input[@name='password']")).sendKeys((String) config.get("password"));
+            $(By.name("confirmPassword")).sendKeys((String) config.get("password"));
         }
 
         sleep(100);
@@ -98,7 +97,7 @@ public class TestSetup extends DriverBase {
         $(By.xpath("//button[text()='Ok']")).click();
         List<SelenideElement> passwordInputs = $$(By.xpath("//div[contains(@class, 'input-container')]//input"));
         for (int i = 0; i < passwordInputs.size(); i += 1){
-            passwordInputs.get(i).sendKeys("abc123456!");
+            passwordInputs.get(i).sendKeys((String) config.get("password"));
         }
         $(By.xpath("//button[text()='Setup Password']")).click();
         $(By.xpath("//button[text()='OK']")).click();

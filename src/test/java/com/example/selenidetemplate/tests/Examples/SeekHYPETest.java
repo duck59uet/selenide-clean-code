@@ -1,4 +1,4 @@
-package com.example.selenidetemplate.tests;
+package com.example.selenidetemplate.tests.Examples;
 
 import com.codeborne.selenide.Condition;
 import com.example.selenidetemplate.config.ConfigurationManager;
@@ -6,19 +6,27 @@ import org.json.JSONObject;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 import org.openqa.selenium.By;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class SeekHYPETest extends TestSetup {
-    private static String mnemonic1 = ConfigurationManager.getProp("mnemonic1");
-    private static String mnemonic2 = ConfigurationManager.getProp("mnemonic2");
+import com.codeborne.selenide.testng.TextReport;
 
+
+@Listeners(TextReport.class)
+public class SeekHYPETest extends TestSetup {
+
+    JSONObject config = new JSONObject(ConfigurationManager.readConfiguration());
 
     @Test(description = "Login wallet then connect wallet on Seekhype")
     public void MintNFT(){
-        //Connect wallet
-        restoreUpC98Wallet(mnemonic1);
+
+        //Connect wallet account 1
+
+        JSONObject account1 = config.getJSONObject("account1");
+
+        restoreUpC98Wallet((String) account1.get("mnemonic"));
         open("https://hub.serenity.twilight.space");
         $("app-wallet").shouldBe(Condition.visible);
         $("app-wallet").click();
@@ -40,18 +48,24 @@ public class SeekHYPETest extends TestSetup {
 
         //Mint NFT
         sleep(5000);
-        //You should switch to main window
+        //When switch between windows (or URLs) you should
         switchTo().window("SeekHYPE");
         open("https://hub.serenity.twilight.space/launchpad");
 
         /**
          * TO-DO
          * Mint NFT has launched
+         * Scrolling view
          */
+        $(By.id("walletBox")).shouldHave(Condition.visible);
+        $(By.id("walletBox")).scrollIntoView("{behavior: \"instant\", block: \"end\", inline: \"nearest\"}");
 
+        sleep(100);
 
-        sleep(10000);
+    }
 
+    @Test
+    public void TransferNFT(){
         /**
          * TO-DO
          * Transfer NFT
@@ -59,7 +73,7 @@ public class SeekHYPETest extends TestSetup {
          * There are 2 options: 1. RestAPI 2. ListElements in UI
          */
         open("https://hub.serenity.twilight.space/profile");
-
+        sleep(1000);
     }
 
     public void queryOwnedNFT(){
@@ -82,7 +96,6 @@ public class SeekHYPETest extends TestSetup {
                 "    ");
 
         JSONObject variable = new JSONObject();
-        variable.put("")
 
         JtwigTemplate template = JtwigTemplate.classpathTemplate("getNFT.json");
         JtwigModel model = JtwigModel.newModel()

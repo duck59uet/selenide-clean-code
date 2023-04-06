@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.eliasnogueira</groupId>
-    <artifactId>selenium-java-lean-test-architecture</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.example.selenidetemplate</groupId>
+    <artifactId>selenide-example</artifactId>
+    <version>1.0</version>
     <name>Selenide-Template</name>
 
     <properties>
@@ -40,6 +40,12 @@
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>6.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide-testng</artifactId>
+            <version>6.13.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -112,6 +118,17 @@
             <artifactId>cucumber-junit</artifactId>
             <version>1.2.6</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.21</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
         </dependency>
     </dependencies>
     <build>
