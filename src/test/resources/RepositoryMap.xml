@@ -56,15 +56,15 @@
             </version>
         </driver>
         <driver id="googlechrome">
-            <version id="95">
+            <version id="100">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_mac64.zip</filelocation>
-                    <hash>5bed018822867015f4dd73414f71ad311cdc484e</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_mac64.zip</filelocation>
+                    <hash>53aabb4f7e16fc928559d429a35733ba</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate arm="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_mac64_m1.zip</filelocation>
-                    <hash>c4346a98e6817415f14e4cad548562f33c439531</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/100.0.4896.20/chromedriver_mac64_m1.zip</filelocation>
+                    <hash>c2fc956a7406abd9af1b66f54b547a14</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
