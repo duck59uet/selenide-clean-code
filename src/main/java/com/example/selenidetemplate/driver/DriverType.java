@@ -36,6 +36,8 @@ public enum DriverType implements DriverSetup {
             options.merge(capabilities);
             options.addExtensions(new File("src/main/resources/Coin98-Wallet.crx"));
             options.addArguments(CHROME_NOT_CHECK_DEFAULT_BROWSER);
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--start-maximized");
             options.setExperimentalOption("prefs", chromePreferences);
 
             return new ChromeDriver(options);
