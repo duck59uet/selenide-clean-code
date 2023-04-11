@@ -18,3 +18,5 @@ build/
 
 #Config
 *.yml
+
+src/test/resources/
